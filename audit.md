@@ -1,32 +1,40 @@
-# Audit Report — Cortex Forge GUI v0.1.0
+# Audit Report — cortex-forge-gui
 
-## Verification Results
+**Score: 76/100**
 
-| Check | Status | Notes |
-|-------|--------|-------|
-| Python syntax check | ✅ PASS | All modules import cleanly |
-| gRPC stubs generated | ✅ PASS | protobuf + gRPC Python stubs generated |
-| Unit tests | ✅ PASS | 8 tests, all pass |
-| PySide6 import | ✅ PASS | PySide6 available |
-| pip install | ✅ PASS | Package installs cleanly |
+## Scoring (20 criteria, 0-5 each)
 
-## Quality Score: 91/100
+| Category | Criterion | Score |
+|----------|-----------|-------|
+| Architecture & Design | 1.1 Modularity | 5/5 |
+| Architecture & Design | 1.2 API Design | 4/5 |
+| Architecture & Design | 1.3 Error Handling | 4/5 |
+| Architecture & Design | 1.4 Configuration | 2/5 |
+| Architecture & Design | 1.5 Extensibility | 4/5 |
+| Code Quality | 2.1 Readability | 4/5 |
+| Code Quality | 2.2 Documentation | 4/5 |
+| Code Quality | 2.3 Testing | 4/5 |
+| Code Quality | 2.4 Type Safety | 2/5 |
+| Code Quality | 2.5 Dependencies | 4/5 |
+| Security | 3.1 Input Validation | 3/5 |
+| Security | 3.2 Authentication | 2/5 |
+| Security | 3.3 Secure Defaults | 4/5 |
+| Build & Deployment | 4.1 Build System | 5/5 |
+| Build & Deployment | 4.2 CI/CD | 3/5 |
+| Build & Deployment | 4.3 Packaging | 4/5 |
+| Project Health | 5.1 Documentation | 5/5 |
+| Project Health | 5.2 Licensing | 5/5 |
+| Project Health | 5.3 Versioning | 4/5 |
+| Project Health | 5.4 Community | 4/5 |
 
-| Criterion | Score | Notes |
-|-----------|-------|-------|
-| Design & Implementation | 92 | Clean MVC-like architecture, well-structured pages |
-| Code Quality | 90 | Type hints, docstrings, consistent style |
-| Test Coverage | 88 | Client tested, UI tests pending (need display) |
-| Test Meaningfulness | 90 | Tests cover all client states (connected/disconnected) |
-| Extensibility | 92 | Easy to add new pages, widgets, or backends |
-| Maintainability | 91 | Well-organized package structure, documented |
+**Total: 76/100**
 
-## Issues Found
+## Verdict: ⚠️ NEEDS IMPROVEMENT (70-89)
 
-1. UI tests require a display server (X11/Wayland) — skipped in headless environment
-2. No PyInstaller build verified (requires PyInstaller)
-3. No integration test with actual server (not running in this environment)
+## Recommendations
 
-## Recommendation
+- Improve **1.4 Configuration** (currently 2/5)
+- Improve **2.4 Type Safety** (currently 2/5)
+- Improve **3.2 Authentication** (currently 2/5)
 
-PUSH with v0.1.0 tag. All Python modules import cleanly, tests pass.
+*Generated: 2026-08-05*
