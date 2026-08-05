@@ -1,0 +1,5 @@
+PySide6>=6.5
+grpcio>=1.50
+grpcio-tools>=1.50
+protobuf>=3.21
+numpy>=1.24

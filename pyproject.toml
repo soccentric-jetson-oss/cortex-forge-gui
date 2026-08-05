@@ -1,0 +1,26 @@
+[metadata]
+name = cortex-forge-gui
+version = 0.1.0
+description = Cross-platform PySide6 GUI for Cortex Forge ML accelerators
+authors = [{name = "Sandesh", email = "sandesh@soccentric.com"}]
+
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "cortex-forge-gui"
+version = "0.1.0"
+description = "Cross-platform desktop GUI for Cortex Forge ML inference"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "PySide6>=6.5",
+    "grpcio>=1.50",
+    "grpcio-tools>=1.50",
+    "protobuf>=3.21",
+    "numpy>=1.24",
+]
+
+[project.scripts]
+cortex-forge-gui = "src.main:main"
