@@ -19,3 +19,9 @@ This GUI depends on the **cortex-forge-server** gRPC service for:
 ## Optional
 
 - PyInstaller (for standalone executable build)
+
+## Version Requirements
+- GCC >= 9, Clang >= 10 (C/C++ projects)
+- Python >= 3.9 (Python projects)
+- CMake >= 3.20 (CMake projects)
+- Linux kernel >= 5.15 (kernel modules)
