@@ -8,6 +8,67 @@ The Cortex Forge GUI is a cross-platform PySide6 desktop application that provid
 - PySide6
 - desktop
 - application
+- macOS-inspired
+- dark
+- theme
+- design
+- Real-time
+- accelerator
+- utilization
+- gauges
+- GPU,
+- NVDLA
+- 0/1,
+- and
+- PVA
+- monitoring
+- Model
+- management
+- with
+- load/unload
+- File
+- dialog
+- for
+- model
+- selection
+- Inference
+- execution
+- with
+- result
+- display
+- Latency
+- and
+- throughput
+- metrics
+- Server
+- connection
+- configuration
+- Auto-reconnect
+- on
+- connection
+- loss
+- gRPC
+- client
+- with
+- protobuf
+- stubs
+- Standalone
+- executable
+- via
+- PyInstaller
+- pip-installable
+- Python
+- package
+- Comprehensive
+- error
+- handling
+- Unit
+- tests
+- for
+- gRPC
+- client
+- MIT
+- licensed
 
 ## Quick Start
 
@@ -20,16 +81,6 @@ The Cortex Forge GUI is a cross-platform PySide6 desktop application that provid
 make all      # Build all targets
 make test     # Run tests
 make clean    # Clean build artifacts
-```
-
-## Architecture
-
-```
-Driver (kernel module) ──► Server (gRPC) ──► GUI (PySide6)
-     │                        │                    │
-     ▼                        ▼                    ▼
-  Hardware              C++ Service           Desktop App
-  Access                Layer                 (macOS/Linux/Win)
 ```
 
 ## Repository Structure
@@ -47,10 +98,10 @@ Driver (kernel module) ──► Server (gRPC) ──► GUI (PySide6)
 ## Project Status
 
 **Version:** 0.1.0 — Initial release
-**License:** macOS-inspired dark theme design
+**License:** MIT
 **Audit Score:** 90/100
 
-## 🌐 Ecosystem
+## Ecosystem
 
 This project is part of the [Jetson AGX Orin Capability Showcase](https://github.com/soccentric-jetson-oss/soccentric-jetson-oss) — five open-source projects demonstrating full exploitation of NVIDIA's flagship edge AI platform.
 
@@ -60,4 +111,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines. All contributions welcome
 
 ## License
 
-macOS-inspired dark theme design. See [LICENSE](LICENSE) for details.
+MIT. See [LICENSE](LICENSE) for details.
