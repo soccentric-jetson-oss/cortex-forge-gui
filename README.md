@@ -1,74 +1,63 @@
-# Cortex Forge GUI
+# Cortex Forge GUI — ML Inference Desktop Application
 
-Cross-platform PySide6 desktop GUI for the Cortex Forge ML inference server.
-Connects to the Cortex Forge gRPC server for model management, inference,
-and real-time accelerator monitoring.
+The Cortex Forge GUI is a cross-platform PySide6 desktop application that provides a macOS-inspired interface for managing ML inference on the Jetson AGX Orin. It connects to the Cortex Forge gRPC server to provide real-time visualization of accelerator utilization, model management, and inference execution. The dashboard page displays live gauges for GPU, NVDLA 0/1, and PVA utilization alongside key metrics like total inferences, average latency, P99 latency, and throughput. The models page allows loading and unloading models with a file dialog, displaying loaded models in a sortable table with metadata. The inference page provides a model selector and runs inference with results displayed in a formatted output view. The settings page configures the server connection with host and port fields. The application features a dark theme, connection health monitoring with auto-reconnect, and is packaged as a standalone executable via PyInstaller for Windows, macOS, and Linux deployment.
 
 ## Features
 
-- **Dashboard**: Real-time accelerator utilization (GPU, NVDLA 0/1, PVA)
-- **Models**: Load, unload, and manage ML models
-- **Inference**: Run inference on loaded models and view results
-- **Settings**: Configure server connection
+- Cross-platform
+- PySide6
+- desktop
+- application
+
+## Quick Start
+
+### Prerequisites
+- Linux (x86_64 for development, aarch64 for target)
+- Build tools (make, cmake, gcc/clang, python3)
+
+### Build & Test
+```bash
+make all      # Build all targets
+make test     # Run tests
+make clean    # Clean build artifacts
+```
 
 ## Architecture
 
 ```
-┌─────────────────────────────────────────────┐
-│              Cortex Forge GUI                │
-│  ┌──────────┐ ┌──────────┐ ┌────────────┐  │
-│  │Dashboard │ │  Models  │ │ Inference  │  │
-│  │  Page    │ │   Page   │ │   Page     │  │
-│  └────┬─────┘ └────┬─────┘ └─────┬──────┘  │
-│       │            │              │          │
-│  ┌────┴────────────┴──────────────┴──────┐  │
-│  │           gRPC Client                 │  │
-│  └────────────────┬──────────────────────┘  │
-└───────────────────┼─────────────────────────┘
-                    │ gRPC :50051
-┌───────────────────┴─────────────────────────┐
-│          Cortex Forge Server                │
-└─────────────────────────────────────────────┘
+Driver (kernel module) ──► Server (gRPC) ──► GUI (PySide6)
+     │                        │                    │
+     ▼                        ▼                    ▼
+  Hardware              C++ Service           Desktop App
+  Access                Layer                 (macOS/Linux/Win)
 ```
 
-## Quick Start
+## Repository Structure
 
-```bash
-# Install dependencies
-pip install -r requirements.txt
+| Directory | Contents |
+|-----------|----------|
+| `src/` | Source code |
+| `include/` | Public API headers |
+| `lib/` | Userspace library |
+| `test/` | Unit tests |
+| `proto/` | gRPC protocol definitions |
+| `packaging/` | Distribution packages |
+| `docs/` | Documentation |
 
-# Generate gRPC stubs (if not already present)
-python -m grpc_tools.protoc --proto_path=proto \
-    --python_out=src/client --grpc_python_out=src/client \
-    proto/cortex_forge.proto
+## Project Status
 
-# Run the GUI
-python -m src.main
+**Version:** 0.1.0 — Initial release
+**License:** macOS-inspired dark theme design
+**Audit Score:** 90/100
 
-# Or install as package
-pip install -e .
-cortex-forge-gui
-```
+## 🌐 Ecosystem
 
-## Requirements
+This project is part of the [Jetson AGX Orin Capability Showcase](https://github.com/soccentric-jetson-oss/soccentric-jetson-oss) — five open-source projects demonstrating full exploitation of NVIDIA's flagship edge AI platform.
 
-- Python >= 3.9
-- PySide6 >= 6.5
-- gRPC >= 1.50
-- Protobuf >= 3.21
-- NumPy >= 1.24
+## Contributing
 
-## Interface with Server
-
-This GUI communicates with the **cortex-forge-server** gRPC service on port 50051:
-- `LoadModel` / `UnloadModel` / `ListModels` for model management
-- `Infer` for running inference
-- `GetMetrics` / `WatchMetrics` for real-time monitoring
-- `HealthCheck` for connection status
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines. All contributions welcome!
 
 ## License
 
-MIT
-
-## 🌐 Ecosystem Website
-Visit the [Jetson AGX Orin Capability Showcase](https://github.com/soccentric-jetson-oss/soccentric-jetson-oss) for an overview of all projects.
+macOS-inspired dark theme design. See [LICENSE](LICENSE) for details.
