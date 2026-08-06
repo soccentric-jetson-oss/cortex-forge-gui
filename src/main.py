@@ -1,8 +1,9 @@
 # SPDX-License-Identifier: MIT
-# Copyright (c) 2026 Cortex Forge Contributors
-
 """
-Application entry point. Starts the PySide6 main window.
+Cortex Forge GUI - Application entry point.
+
+Thin entry point that creates the QApplication and launches the
+main window. All UI logic lives in src.app.CortexForgeApp.
 """
 
 import sys
@@ -11,6 +12,7 @@ from PySide6.QtWidgets import QApplication
 
 
 def main():
+    """Create and run the Cortex Forge GUI application."""
     app = QApplication(sys.argv)
     app.setApplicationName("Cortex Forge")
     app.setOrganizationName("SoC Centric")
