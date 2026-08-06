@@ -33,12 +33,12 @@ class InferencePage(QWidget):
 
         # Header
         header = QLabel("Inference")
-        header.setStyleSheet("color: #e0e0e0; font-size: 28px; font-weight: bold;")
+        header.setStyleSheet("color: #212121; font-size: 28px; font-weight: bold;")
         header.setFont(QFont("SF Pro Display", 28, QFont.Weight.Bold))
         layout.addWidget(header)
 
         subtitle = QLabel("Run inference on loaded models and view results")
-        subtitle.setStyleSheet("color: #888; font-size: 14px;")
+        subtitle.setStyleSheet("color: #616161; font-size: 14px;")
         layout.addWidget(subtitle)
 
         # Model selector
@@ -53,9 +53,9 @@ class InferencePage(QWidget):
         self.model_combo.setMinimumWidth(300)
         self.model_combo.setStyleSheet("""
             QComboBox {
-                background: #1a1a2e;
-                color: #e0e0e0;
-                border: 1px solid #2a2a4a;
+                background: #ffffff;
+                color: #212121;
+                border: 1px solid #e0e0e0;
                 border-radius: 8px;
                 padding: 8px 12px;
                 font-size: 13px;
@@ -65,10 +65,10 @@ class InferencePage(QWidget):
                 padding-right: 8px;
             }
             QComboBox QAbstractItemView {
-                background: #1a1a2e;
-                color: #e0e0e0;
-                border: 1px solid #2a2a4a;
-                selection-background-color: #64b5f640;
+                background: #ffffff;
+                color: #212121;
+                border: 1px solid #e0e0e0;
+                selection-background-color: #1976D240;
             }
         """)
         selector_layout.addWidget(self.model_combo)
@@ -82,7 +82,7 @@ class InferencePage(QWidget):
         self.run_btn.setStyleSheet("""
             QPushButton {
                 background: #76ff03;
-                color: #0f0f1a;
+                color: #212121;
                 border: none;
                 border-radius: 8px;
                 padding: 8px 24px;
@@ -102,12 +102,12 @@ class InferencePage(QWidget):
         self.progress.setFixedHeight(4)
         self.progress.setStyleSheet("""
             QProgressBar {
-                background: #2a2a4a;
+                background: #e0e0e0;
                 border: none;
                 border-radius: 2px;
             }
             QProgressBar::chunk {
-                background: #64b5f6;
+                background: #1976D2;
                 border-radius: 2px;
             }
         """)
@@ -123,9 +123,9 @@ class InferencePage(QWidget):
         self.results_text.setReadOnly(True)
         self.results_text.setStyleSheet("""
             QTextEdit {
-                background: #1a1a2e;
-                color: #e0e0e0;
-                border: 1px solid #2a2a4a;
+                background: #ffffff;
+                color: #212121;
+                border: 1px solid #e0e0e0;
                 border-radius: 12px;
                 padding: 16px;
                 font-size: 12px;

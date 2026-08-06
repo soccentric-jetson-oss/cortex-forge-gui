@@ -34,12 +34,12 @@ class ModelsPage(QWidget):
 
         # Header
         header = QLabel("Models")
-        header.setStyleSheet("color: #e0e0e0; font-size: 28px; font-weight: bold;")
+        header.setStyleSheet("color: #212121; font-size: 28px; font-weight: bold;")
         header.setFont(QFont("SF Pro Display", 28, QFont.Weight.Bold))
         layout.addWidget(header)
 
         subtitle = QLabel("Load, unload, and manage ML models")
-        subtitle.setStyleSheet("color: #888; font-size: 14px;")
+        subtitle.setStyleSheet("color: #616161; font-size: 14px;")
         layout.addWidget(subtitle)
 
         # Controls
@@ -51,8 +51,8 @@ class ModelsPage(QWidget):
         self.load_btn.setCursor(Qt.PointingHandCursor)
         self.load_btn.setStyleSheet("""
             QPushButton {
-                background: #64b5f6;
-                color: #0f0f1a;
+                background: #1976D2;
+                color: #212121;
                 border: none;
                 border-radius: 8px;
                 padding: 8px 20px;
@@ -99,18 +99,18 @@ class ModelsPage(QWidget):
         self.table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
         self.table.setStyleSheet("""
             QTableWidget {
-                background: #1a1a2e;
-                border: 1px solid #2a2a4a;
+                background: #ffffff;
+                border: 1px solid #e0e0e0;
                 border-radius: 12px;
-                color: #e0e0e0;
+                color: #212121;
                 font-size: 12px;
-                gridline-color: #2a2a4a;
+                gridline-color: #212121;
             }
             QTableWidget::item { padding: 8px; }
-            QTableWidget::item:selected { background: #64b5f640; }
+            QTableWidget::item:selected { background: #1976D240; }
             QHeaderView::section {
-                background: #0f0f1a;
-                color: #888;
+                background: #f5f5f5;
+                color: #616161;
                 border: none;
                 padding: 10px;
                 font-weight: 600;

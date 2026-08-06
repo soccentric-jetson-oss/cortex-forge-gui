@@ -16,13 +16,13 @@ from PySide6.QtGui import QFont
 class MetricCard(QFrame):
     """A card displaying a single metric value."""
 
-    def __init__(self, title, value="--", unit="", color="#64b5f6", parent=None):
+    def __init__(self, title, value="--", unit="", color="#1976D2", parent=None):
         super().__init__(parent)
         self.setFixedSize(200, 120)
         self.setStyleSheet(f"""
             QFrame {{
-                background: #1a1a2e;
-                border: 1px solid #2a2a4a;
+                background: #ffffff;
+                border: 1px solid #e0e0e0;
                 border-radius: 12px;
                 padding: 16px;
             }}
@@ -33,7 +33,7 @@ class MetricCard(QFrame):
         layout.setSpacing(4)
 
         title_label = QLabel(title)
-        title_label.setStyleSheet("color: #888; font-size: 11px; font-weight: 600;")
+        title_label.setStyleSheet("color: #616161; font-size: 11px; font-weight: 600;")
         title_label.setFont(QFont("SF Pro Display", 11))
         layout.addWidget(title_label)
 
@@ -53,12 +53,12 @@ class MetricCard(QFrame):
 class AcceleratorGauge(QFrame):
     """Gauge showing accelerator utilization."""
 
-    def __init__(self, name, color="#64b5f6", parent=None):
+    def __init__(self, name, color="#1976D2", parent=None):
         super().__init__(parent)
         self.setStyleSheet(f"""
             QFrame {{
-                background: #1a1a2e;
-                border: 1px solid #2a2a4a;
+                background: #ffffff;
+                border: 1px solid #e0e0e0;
                 border-radius: 12px;
                 padding: 16px;
             }}
@@ -82,7 +82,7 @@ class AcceleratorGauge(QFrame):
         self.progress.setFixedHeight(20)
         self.progress.setStyleSheet(f"""
             QProgressBar {{
-                background: #2a2a4a;
+                background: #e0e0e0;
                 border: none;
                 border-radius: 10px;
                 text-align: center;
@@ -128,12 +128,12 @@ class DashboardPage(QWidget):
 
         # Header
         header = QLabel("Dashboard")
-        header.setStyleSheet("color: #e0e0e0; font-size: 28px; font-weight: bold;")
+        header.setStyleSheet("color: #212121; font-size: 28px; font-weight: bold;")
         header.setFont(QFont("SF Pro Display", 28, QFont.Weight.Bold))
         layout.addWidget(header)
 
         subtitle = QLabel("Real-time accelerator utilization and inference metrics")
-        subtitle.setStyleSheet("color: #888; font-size: 14px;")
+        subtitle.setStyleSheet("color: #616161; font-size: 14px;")
         layout.addWidget(subtitle)
 
         # Accelerator gauges
@@ -141,8 +141,8 @@ class DashboardPage(QWidget):
         gauge_layout.setSpacing(16)
 
         self.gpu_gauge = AcceleratorGauge("GPU (Ampere)", "#76ff03")
-        self.dla0_gauge = AcceleratorGauge("NVDLA 0", "#64b5f6")
-        self.dla1_gauge = AcceleratorGauge("NVDLA 1", "#64b5f6")
+        self.dla0_gauge = AcceleratorGauge("NVDLA 0", "#1976D2")
+        self.dla1_gauge = AcceleratorGauge("NVDLA 1", "#1976D2")
         self.pva_gauge = AcceleratorGauge("PVA v2.0", "#ff6d00")
 
         gauge_layout.addWidget(self.gpu_gauge)
@@ -156,7 +156,7 @@ class DashboardPage(QWidget):
         cards_layout.setSpacing(16)
 
         self.inferences_card = MetricCard("Total Inferences", "0", "", "#76ff03")
-        self.latency_card = MetricCard("Avg Latency", "0", "μs", "#64b5f6")
+        self.latency_card = MetricCard("Avg Latency", "0", "μs", "#1976D2")
         self.p99_card = MetricCard("P99 Latency", "0", "μs", "#ff6d00")
         self.throughput_card = MetricCard("Throughput", "0", "inf/s", "#ce93d8")
 
@@ -168,7 +168,7 @@ class DashboardPage(QWidget):
 
         # Memory card
         mem_layout = QHBoxLayout()
-        self.mem_card = MetricCard("GPU Memory", "0 / 0", "MB", "#64b5f6")
+        self.mem_card = MetricCard("GPU Memory", "0 / 0", "MB", "#1976D2")
         mem_layout.addWidget(self.mem_card)
         mem_layout.addStretch()
         layout.addLayout(mem_layout)

@@ -32,20 +32,20 @@ class SettingsPage(QWidget):
 
         # Header
         header = QLabel("Settings")
-        header.setStyleSheet("color: #e0e0e0; font-size: 28px; font-weight: bold;")
+        header.setStyleSheet("color: #212121; font-size: 28px; font-weight: bold;")
         header.setFont(QFont("SF Pro Display", 28, QFont.Weight.Bold))
         layout.addWidget(header)
 
         subtitle = QLabel("Configure the Cortex Forge server connection")
-        subtitle.setStyleSheet("color: #888; font-size: 14px;")
+        subtitle.setStyleSheet("color: #616161; font-size: 14px;")
         layout.addWidget(subtitle)
 
         # Connection settings card
         card = QFrame()
         card.setStyleSheet("""
             QFrame {
-                background: #1a1a2e;
-                border: 1px solid #2a2a4a;
+                background: #ffffff;
+                border: 1px solid #e0e0e0;
                 border-radius: 12px;
                 padding: 24px;
             }
@@ -63,14 +63,14 @@ class SettingsPage(QWidget):
         self.host_input = QLineEdit("localhost")
         self.host_input.setStyleSheet("""
             QLineEdit {
-                background: #0f0f1a;
-                color: #e0e0e0;
-                border: 1px solid #2a2a4a;
+                background: #f5f5f5;
+                color: #212121;
+                border: 1px solid #e0e0e0;
                 border-radius: 8px;
                 padding: 8px 12px;
                 font-size: 13px;
             }
-            QLineEdit:focus { border-color: #64b5f6; }
+            QLineEdit:focus { border-color: #1976D2; }
         """)
         host_layout.addWidget(self.host_input, 1)
         card_layout.addLayout(host_layout)
@@ -88,14 +88,14 @@ class SettingsPage(QWidget):
         self.port_input.setFixedWidth(120)
         self.port_input.setStyleSheet("""
             QSpinBox {
-                background: #0f0f1a;
-                color: #e0e0e0;
-                border: 1px solid #2a2a4a;
+                background: #f5f5f5;
+                color: #212121;
+                border: 1px solid #e0e0e0;
                 border-radius: 8px;
                 padding: 8px 12px;
                 font-size: 13px;
             }
-            QSpinBox:focus { border-color: #64b5f6; }
+            QSpinBox:focus { border-color: #1976D2; }
         """)
         port_layout.addWidget(self.port_input)
         port_layout.addStretch()
@@ -107,8 +107,8 @@ class SettingsPage(QWidget):
         self.connect_btn.setCursor(Qt.PointingHandCursor)
         self.connect_btn.setStyleSheet("""
             QPushButton {
-                background: #64b5f6;
-                color: #0f0f1a;
+                background: #1976D2;
+                color: #212121;
                 border: none;
                 border-radius: 8px;
                 padding: 8px 24px;
@@ -124,7 +124,7 @@ class SettingsPage(QWidget):
 
         # Status
         self.status_label = QLabel("Not connected")
-        self.status_label.setStyleSheet("color: #888; font-size: 12px;")
+        self.status_label.setStyleSheet("color: #616161; font-size: 12px;")
         layout.addWidget(self.status_label)
 
         layout.addStretch()
@@ -137,9 +137,9 @@ class SettingsPage(QWidget):
         success = self.grpc_client.connect(self.host, self.port)
         if success:
             self.status_label.setText(f"✅ Connected to {self.host}:{self.port}")
-            self.status_label.setStyleSheet("color: #4caf50; font-size: 12px;")
+            self.status_label.setStyleSheet("color: #388E3C; font-size: 12px;")
         else:
             self.status_label.setText(f"❌ Failed to connect to {self.host}:{self.port}")
-            self.status_label.setStyleSheet("color: #f44336; font-size: 12px;")
+            self.status_label.setStyleSheet("color: #D32F2F; font-size: 12px;")
 
         self.connection_changed.emit()

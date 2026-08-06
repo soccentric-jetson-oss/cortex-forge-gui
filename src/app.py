@@ -41,7 +41,7 @@ class SidebarButton(QPushButton):
                 border: none;
                 border-radius: 8px;
                 font-size: 14px;
-                color: #e0e0e0;
+                color: #212121;
                 background: transparent;
             }
             QPushButton:hover {
@@ -49,7 +49,7 @@ class SidebarButton(QPushButton):
             }
             QPushButton:checked {
                 background: rgba(100, 149, 237, 0.25);
-                color: #64b5f6;
+                color: #1976D2;
                 font-weight: 600;
             }
         """)
@@ -93,8 +93,8 @@ class CortexForgeApp(QMainWindow):
         sidebar.setFixedWidth(220)
         sidebar.setStyleSheet("""
             QFrame {
-                background: #1a1a2e;
-                border-right: 1px solid #2a2a4a;
+                background: #ffffff;
+                border-right: 1px solid #e0e0e0;
             }
         """)
         sidebar_layout = QVBoxLayout(sidebar)
@@ -105,7 +105,7 @@ class CortexForgeApp(QMainWindow):
         title = QLabel("Cortex Forge")
         title_font = QFont("SF Pro Display", 18, QFont.Weight.Bold)
         title.setFont(title_font)
-        title.setStyleSheet("color: #64b5f6; padding: 0 8px 16px 8px;")
+        title.setStyleSheet("color: #1976D2; padding: 0 8px 16px 8px;")
         sidebar_layout.addWidget(title)
 
         # Navigation buttons
@@ -122,7 +122,7 @@ class CortexForgeApp(QMainWindow):
 
         # ── Content area ─────────────────────────────────────────────────
         content = QFrame()
-        content.setStyleSheet("background: #0f0f1a;")
+        content.setStyleSheet("background: #f5f5f5;")
         content_layout = QVBoxLayout(content)
         content_layout.setContentsMargins(0, 0, 0, 0)
 
@@ -147,9 +147,9 @@ class CortexForgeApp(QMainWindow):
         self.status_bar = QStatusBar()
         self.status_bar.setStyleSheet("""
             QStatusBar {
-                background: #1a1a2e;
-                color: #888;
-                border-top: 1px solid #2a2a4a;
+                background: #ffffff;
+                color: #616161;
+                border-top: 1px solid #e0e0e0;
                 font-size: 12px;
             }
         """)
@@ -190,10 +190,10 @@ class CortexForgeApp(QMainWindow):
         success = self.grpc_client.connect(host, port)
         if success:
             self.status_label.setText(f"Connected to {host}:{port}")
-            self.status_label.setStyleSheet("color: #4caf50;")
+            self.status_label.setStyleSheet("color: #388E3C;")
         else:
             self.status_label.setText("Disconnected")
-            self.status_label.setStyleSheet("color: #f44336;")
+            self.status_label.setStyleSheet("color: #D32F2F;")
 
     def _check_connection(self):
         """Periodic connection health check."""
@@ -201,10 +201,10 @@ class CortexForgeApp(QMainWindow):
             if not self.status_label.text().startswith("Connected"):
                 self.status_label.setText(
                     f"Connected to {self.settings_page.host}:{self.settings_page.port}")
-                self.status_label.setStyleSheet("color: #4caf50;")
+                self.status_label.setStyleSheet("color: #388E3C;")
         else:
             self.status_label.setText("Disconnected")
-            self.status_label.setStyleSheet("color: #f44336;")
+            self.status_label.setStyleSheet("color: #D32F2F;")
 
     @Slot()
     def _on_connection_changed(self):
