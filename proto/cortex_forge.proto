@@ -33,23 +33,21 @@ service CortexForge {
 // ── Model Management ───────────────────────────────────────────────────────
 
 message LoadModelRequest {
-    string model_path = 1;       // Path to model file (engine plan, ONNX, etc.)
-    string model_name = 2;       // Optional: friendly name (auto-generated if empty)
-    string framework = 3;        // "tensorrt", "onnx", "custom"
-    uint32 batch_size = 4;       // Max batch size (0 = default)
-    string accelerator = 5;      // "gpu", "dla0", "dla1", "pva", "auto"
+    string model_path = 1;  // Path to model file (engine plan, ONNX, etc.)
+    string model_name = 2;  // Optional: friendly name (auto-generated if empty)
+    string framework = 3;   // "tensorrt", "onnx", "custom"
+    uint32 batch_size = 4;  // Max batch size (0 = default)
+    string accelerator = 5; // "gpu", "dla0", "dla1", "pva", "auto"
 }
 
 message LoadModelResponse {
-    string model_id = 1;         // Unique model identifier
-    string model_name = 2;       // Assigned model name
+    string model_id = 1;   // Unique model identifier
+    string model_name = 2; // Assigned model name
     bool success = 3;
     string error_message = 4;
 }
 
-message UnloadModelRequest {
-    string model_id = 1;
-}
+message UnloadModelRequest { string model_id = 1; }
 
 message UnloadModelResponse {
     bool success = 1;
@@ -72,13 +70,9 @@ message ModelInfo {
     bool loaded = 9;
 }
 
-message ListModelsResponse {
-    repeated ModelInfo models = 1;
-}
+message ListModelsResponse { repeated ModelInfo models = 1; }
 
-message GetModelInfoRequest {
-    string model_id = 1;
-}
+message GetModelInfoRequest { string model_id = 1; }
 
 message GetModelInfoResponse {
     ModelInfo model = 1;
@@ -89,14 +83,14 @@ message GetModelInfoResponse {
 
 message InferRequest {
     string model_id = 1;
-    bytes input_data = 2;        // Serialized input tensor(s)
-    map<string, string> params = 3;  // Optional inference parameters
+    bytes input_data = 2;           // Serialized input tensor(s)
+    map<string, string> params = 3; // Optional inference parameters
 }
 
 message InferResponse {
     string model_id = 1;
-    bytes output_data = 2;       // Serialized output tensor(s)
-    uint64 latency_us = 3;       // Inference latency in microseconds
+    bytes output_data = 2; // Serialized output tensor(s)
+    uint64 latency_us = 3; // Inference latency in microseconds
     bool success = 4;
     string error_message = 5;
 }
@@ -128,14 +122,12 @@ message MetricsSnapshot {
     uint64 timestamp_us = 11;
 }
 
-message GetMetricsResponse {
-    MetricsSnapshot current = 1;
-}
+message GetMetricsResponse { MetricsSnapshot current = 1; }
 
 // ── Health ─────────────────────────────────────────────────────────────────
 
 message HealthCheckRequest {
-    string service = 1;          // Optional: specific service to check
+    string service = 1; // Optional: specific service to check
 }
 
 message HealthCheckResponse {
